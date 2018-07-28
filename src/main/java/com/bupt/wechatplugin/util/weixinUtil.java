@@ -27,7 +27,8 @@ public class weixinUtil {
     private static final String APPID = "wxbf4262ec5dbda8c7";
     private static final String APPSECRET = "c383d9ce8e7f0d15d6cdd222bb07e866";
     private static final String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
-
+    //      101.226.233.153
+    //    api.weixin.qq.com
 
     private static Logger logger = LoggerFactory.getLogger(new weixinUtil().getClass());
 

@@ -68,11 +68,13 @@
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring-boot.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
             <version>${spring-boot.version}</version>
         </dependency>
+          <!--微信工具包sdk-->
         <dependency>
             <groupId>com.github.binarywang</groupId>
             <artifactId>weixin-java-mp</artifactId>
@@ -96,11 +98,13 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.47</version>
         </dependency>
+
         <dependency>
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>
             <version>1.6.1</version>
         </dependency>
+
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
@@ -118,6 +122,7 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.21</version>
         </dependency>
+
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>persistence-api</artifactId>
@@ -130,13 +135,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
+
     </dependencies>
 </project>

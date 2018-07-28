@@ -10,7 +10,7 @@ import com.bupt.wechatplugin.util.weixinUtil;
 import com.bupt.wechatplugin.util.MessageUtil;
 
 @RestController
-@RequestMapping("/wechat")
+@RequestMapping("api/v1/wechatplugin/")
 public class WechatController {
 
     private CoreServiceImpl wechatService;
@@ -29,7 +29,7 @@ public class WechatController {
      * @return  若成功返回echostr
      */
     @ResponseBody
-    @GetMapping("/verify")
+    @GetMapping("verify")
     public String authGet(
             @RequestParam(name = "signature", required = false) String signature,
             @RequestParam(name = "timestamp", required = false) String timestamp,
@@ -60,26 +60,13 @@ public class WechatController {
 //    1. application/x-www-form-urlencoded， 可选（即非必须，因为这种情况的数据@RequestParam, @ModelAttribute也可以处理，当然@RequestBody也能处理）；
 //    2. multipart/form-data, 不能处理（即使用@RequestBody不能处理这种格式的数据）；
 //    3. 其他格式， 必须（其他格式包括application/json, application/xml等。这些格式的数据，必须使用@RequestBody来处理）；
-//    @ResponseBody
-//    @RequestMapping(value="/test1",method = RequestMethod.POST)
-//    public String test1(@RequestBody String msg){
-//        System.out.println(msg);
-//        JSONObject jsonObject = JSONObject.fromObject(msg);
-//
-//        return jsonObject.getString("id");
-//    }
-//
-//    @ResponseBody
-//    @RequestMapping(value="/test2",method = RequestMethod.GET)
-//    public String test2(){
-//        return "test2 succeed";
-//    }
+
 
     /**
      * 接收平台消息
      * @param request
      */
-    @RequestMapping(value="/send", method = RequestMethod.POST )
+    @RequestMapping(value="send", method = RequestMethod.POST )
     public void wechatController(@RequestBody String deviceMsg){
 
         logger.info("deviceMsg: " + deviceMsg);
