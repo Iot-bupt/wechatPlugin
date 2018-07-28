@@ -9,7 +9,7 @@ spring:
     active: prod
   datasource:
     driver_class_name: com.mysql.jdbc.Driver
-    uri: jdbc:mysql://39.104.165.155:3306/BUPT_IOT?characterEncoding=UTF-8
+    url: jdbc:mysql://39.104.165.155:3306/BUPT_IOT?characterEncoding=UTF-8
     username: root
     password: root
     cachePrepStmts: true #开启二级缓存
@@ -22,7 +22,8 @@ mybatis:
     mutiple-result-sets-enabled: true
     default-executor-type: reuse
     default-statement-type: 25000
-  type-aliases-package:  org.spring.springboot.domain
+  type-aliases-package:  com.bupt.wechatplugin.domain   # 指向实体包路径
+  mapperLocations:  # classpath路径下的maapper包,扫描 xml 文件
 
 
 wechat:
