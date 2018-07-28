@@ -1,15 +1,16 @@
 package com.bupt.wechatplugin.controller;
 
 import com.bupt.wechatplugin.domain.Device;
-import com.bupt.wechatplugin.service.core.CoreServiceImpl;
+import com.bupt.wechatplugin.service.impl.CoreServiceImpl;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import net.sf.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import com.bupt.wechatplugin.util.weixinUtil;
 import com.bupt.wechatplugin.util.MessageUtil;
-
-import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/wechat")
@@ -56,25 +57,39 @@ public class WechatController {
         return "error";
     }
 
+
+//    GET、POST方式提时， 根据request header Content-Type的值来判断:
+//
+//    1. application/x-www-form-urlencoded， 可选（即非必须，因为这种情况的数据@RequestParam, @ModelAttribute也可以处理，当然@RequestBody也能处理）；
+//    2. multipart/form-data, 不能处理（即使用@RequestBody不能处理这种格式的数据）；
+//    3. 其他格式， 必须（其他格式包括application/json, application/xml等。这些格式的数据，必须使用@RequestBody来处理）；
 //    @ResponseBody
-//    @GetMapping("/test")
-//    public String test(){
-//        return "Test Succeed";
+//    @RequestMapping(value="/test1",method = RequestMethod.POST)
+//    public String test1(@RequestBody String msg){
+//        System.out.println(msg);
+//        JSONObject jsonObject = JSONObject.fromObject(msg);
+//
+//        return jsonObject.getString("id");
+//    }
+//
+//    @ResponseBody
+//    @RequestMapping(value="/test2",method = RequestMethod.GET)
+//    public String test2(){
+//        return "test2 succeed";
 //    }
 
     /**
      * 接收平台消息
      * @param request
      */
-    @GetMapping("/send")
-    public void wechatController(HttpServletRequest request){
-//        CoreServiceImpl coreService = new CoreServiceImpl();
-        Device device = new Device();
+    @RequestMapping(value="/send", method = RequestMethod.POST )
+    public void wechatController(@RequestBody String deviceMsg){
 
-        // 解析平台传过来的json数据,建立用户对象
+        logger.info("deviceMsg: " + deviceMsg);
         logger.info("======= send templateNews =======");
-        wechatService.processRequest(request,device);
 
+        // 解析平台传过来的json数据,建立设备对象
+         Device device = wechatService.processRequest(deviceMsg);
         // 发送模板消息
         MessageUtil.pushTemplateNews(device.getOpenid(), device.getDevice(), device.getNumber(), device.getWarningMsg());
     }
