@@ -10,7 +10,6 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
@@ -27,8 +26,7 @@ public class weixinUtil {
     private static final String APPID = "wxbf4262ec5dbda8c7";
     private static final String APPSECRET = "c383d9ce8e7f0d15d6cdd222bb07e866";
     private static final String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
-    //      101.226.233.153
-    //    api.weixin.qq.com
+
 
     private static Logger logger = LoggerFactory.getLogger(new weixinUtil().getClass());
 
@@ -110,6 +108,20 @@ public class weixinUtil {
         }
         logger.info("access_token: " + accessToken.getAccess_token());
         return accessToken;
+    }
+
+    /**
+     *  差数据库获取 openid
+     * @param nickname
+     * @return
+     */
+    public static String getOpenid(String nickname){
+        String url = "http://beiyouxianyu.cn/api/v1/wechatplugin/findByNickName?nickname=" + nickname;
+//        logger.info("get openid url: " + url);
+        JSONObject jsonObject = doGetStr(url);
+//        logger.info("jasonObject: : " + jsonObject);
+
+        return jsonObject.getString("openid");
     }
 
     /**

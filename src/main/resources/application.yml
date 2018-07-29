@@ -38,6 +38,4 @@ wechat:
   template_send_url: "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=ACCESS_TOKEN"
   templateId: "2yF5SaZYPwPF1SdTAdezOFf3938LHa2Jtme5KyKsB1I"
 
-logging:
-  level:
-    org-springframework.web: DEBUG
+

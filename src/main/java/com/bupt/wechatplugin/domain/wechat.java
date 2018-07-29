@@ -3,7 +3,7 @@ package com.bupt.wechatplugin.domain;
 /**
  *  用户模型
  */
-public class User {
+public class wechat {
     // 用户id
     private String id;
     // 用户姓名
@@ -11,11 +11,11 @@ public class User {
     // 用户openid
     private String openid;
 
-    public User(){
+    public wechat(){
 
     }
 
-    public User(String id, String nickName, String openid){
+    public wechat(String id, String nickName, String openid){
         this.id = id;
         this.nickName = nickName;
         this.openid = openid;
@@ -43,5 +43,14 @@ public class User {
 
     public void setOpenid(String openid) {
         this.openid = openid;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", openid='" + openid + '\'' +
+                '}';
     }
 }

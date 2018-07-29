@@ -10,7 +10,7 @@ import com.bupt.wechatplugin.util.weixinUtil;
 import com.bupt.wechatplugin.util.MessageUtil;
 
 @RestController
-@RequestMapping("api/v1/wechatplugin/")
+        @RequestMapping("api/v1/wechatplugin/")
 public class WechatController {
 
     private CoreServiceImpl wechatService;
@@ -64,7 +64,7 @@ public class WechatController {
 
     /**
      * 接收平台消息
-     * @param request
+     * @param deviceMsg
      */
     @RequestMapping(value="send", method = RequestMethod.POST )
     public void wechatController(@RequestBody String deviceMsg){
@@ -78,6 +78,11 @@ public class WechatController {
         MessageUtil.pushTemplateNews(device.getOpenid(), device.getDevice(), device.getNumber(), device.getWarningMsg());
     }
 }
+
+
+
+
+
 
 //    @PostMapping(produces = "application/xml; charset=UTF-8")
 //    public String post(@RequestBody String requestBody,

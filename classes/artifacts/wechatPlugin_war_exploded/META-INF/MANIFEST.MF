@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: spring-boot-for-wechat
+Implementation-Version: 1.0-SNAPSHOT
+Built-By: shixian
+Implementation-Vendor-Id: com.bupt
+Created-By: IntelliJ IDEA
+Build-Jdk: 10.0.1
+Main-Class: ${start-class}
+

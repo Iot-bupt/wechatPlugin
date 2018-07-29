@@ -1,0 +1,27 @@
+server:
+    port: 80
+    url:
+
+spring:
+  application:
+    name: WechatPlugin
+  profiles:
+    active: prod
+  wechat:
+    appId: "wxbf4262ec5dbda8c7"
+    appSecret: "c383d9ce8e7f0d15d6cdd222bb07e866"
+    token: 'weixin'
+    aesKey:
+    access_token_url: "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET"
+    message_text: "text"
+    messaage_event: "event"
+    text_color: "#DC143C"
+    template_send_url: "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=ACCESS_TOKEN"
+    templateId: "2yF5SaZYPwPF1SdTAdezOFf3938LHa2Jtme5KyKsB1I"
+
+
+
+
+logging:
+  level:
+    org-springframework.web: DEBUG
