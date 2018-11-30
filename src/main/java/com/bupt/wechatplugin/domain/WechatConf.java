@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "wechat")
 public class WechatConf {
 //    private String appid = "wx3f4d110990c55e1d"; // 测试号
-    private String appid = "wxe4f16bf312643708";  // 冠川
+    private String appid = "wxe4f16bf312643708";
 //    private String appSecret = "645301efb63a9e82c3312040e0368a44";  // 测试号
-    private String appSecret = "5e1518e38678bd75487e761e926dc7d1";  // 冠川
+    private String appSecret = "5e1518e38678bd75487e761e926dc7d1";  
     private String token = "weixin";
     private String aesKey = "nUAj1trYmZWDHxf1AcW545ZLuaOSTTz5hivsTzacYUj";
     private String access_token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
