@@ -141,63 +141,24 @@ public class MessageUtil {
 
     /**
      *  发送模板消息
-     * @param touser openid
-     * @param name   设备名称
-     * @param number 设备编号
-     * @param status 设备状态
+     * @param templateNews
      */
-    public static void pushTemplateNews(String touser,String name,String number,String status) {
-        TreeMap<String,TreeMap<String,String>> params = new TreeMap<String,TreeMap<String,String>>();
-        params.put("title",TemplateNews.item("您平台的设备出现异常状况！",TEXT_COLOR));
-        params.put("name",TemplateNews.item(name,TEXT_COLOR));
-        params.put("number",TemplateNews.item(number,TEXT_COLOR));
-        params.put("status",TemplateNews.item(status,TEXT_COLOR));
-        TemplateNews templateNews = new TemplateNews();
-        templateNews.setTemplate_id(Templave_Id);
-        templateNews.setTouser(touser);
-        templateNews.setData(params);
-
+    public static void pushTemplateNews(TemplateNews templateNews) {
         AccessToken access_token = weixinUtil.getAccessToken();
         System.out.println("access_token : " + access_token);
 
-        String data = JsonUtil.toJsonString(templateNews);
-        System.out.println("data: " + data);
+        String body = JsonUtil.toJsonString(templateNews);
+        System.out.println("requestBody: " + body);
 
         String url = TemplateNews_URL.replace("ACCESS_TOKEN",access_token.getAccess_token());
         System.out.println("send_message_url: " + url);
         try {
-            weixinUtil.doPostStr(url,data);
+            weixinUtil.doPostStr(url,body);
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
 
 }
-
-//    /*
-//     * 主菜单
-//     * */
-//    public static String menuText() {
-//        StringBuffer sb = new StringBuffer();
-//        sb.append("欢迎您的关注:\n\n");
-//        sb.append("回复1、微信公众号介绍\n\n");
-//        sb.append("回复2、开发者介绍\n\n");
-//        sb.append("回复?、调出帮助菜单。");
-//        return sb.toString();
-//    }
-//
-//    public static String firstMenu() {
-//        StringBuffer sb = new StringBuffer();
-//        sb.append("本公众号主要用于设备故障信息的推送反馈服务\n\n");
-//        return sb.toString();
-//    }
-//
-//    public static String secondMenu() {
-//        StringBuffer sb = new StringBuffer();
-//        sb.append("测试Demo\n\n");
-//        return sb.toString();
-//    }

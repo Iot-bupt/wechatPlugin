@@ -1,5 +1,6 @@
 package com.bupt.wechatplugin.util;
 
+import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -97,5 +98,18 @@ public class JsonUtil {
             }.getType());
         }
         return map;
+    }
+
+    /**
+     *  为 data 中每一个key的值指定颜色
+     * @param value
+     * @param color
+     * @return  TreeMap
+     */
+    public static JSONObject setItem(String value, String color) {
+        JSONObject item = new JSONObject();
+        item.put("value", value);
+        item.put("color", color);
+        return item;
     }
 }

@@ -1,6 +1,7 @@
 package com.bupt.wechatplugin.domain;
 
-import java.util.TreeMap;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 
 /**
  *  模板消息
@@ -22,25 +23,17 @@ public class TemplateNews extends BaseMessage{
 	// 所需跳转到小程序的具体页面路径，支持带参数,（示例index?foo=bar）
 	private String pagepath;
 	// 模板数据
-	private TreeMap<String, TreeMap<String, String>> data;
+	private JSONObject data;
 	// 模板内容字体颜色，不填默认为黑色
 	private String color;
 
-
-
-
-	/**
-	 *  为 data 中每一个key的值指定颜色
-	 * @param value
-	 * @param color
-	 * @return  TreeMap
-	 */
-	public static TreeMap<String, String> item(String value, String color) {
-		TreeMap<String, String> params = new TreeMap<String, String>();
-		params.put("value", value);
-		params.put("color", color);
-		return params;
+	public TemplateNews(String touser, String template_id, String appid, JSONObject data){
+		this.touser = touser;
+		this.template_id = template_id;
+		this.appid = appid;
+		this.data = data;
 	}
+
 
 	public String getTouser() {
 		return touser;
@@ -58,22 +51,27 @@ public class TemplateNews extends BaseMessage{
 		this.template_id = template_id;
 	}
 
-	public TreeMap<String, TreeMap<String, String>> getData() {
-		return data;
-	}
+    public JSONObject getData() {
+        return data;
+    }
 
-	public void setData(TreeMap<String, TreeMap<String, String>> data) {
-		this.data = data;
-	}
+    public void setData(JSONObject data) {
+        this.data = data;
+    }
 
-	@Override
-	public String toString() {
-		return "TemplateNews{" +
-				"touser='" + touser + '\'' +
-				", template_id='" + template_id + '\'' +
-				", data=" + data +
-				'}';
-	}
+    @Override
+    public String toString() {
+        return "TemplateNews{" +
+                "touser='" + touser + '\'' +
+                ", template_id='" + template_id + '\'' +
+                ", url='" + url + '\'' +
+                ", miniprogram='" + miniprogram + '\'' +
+                ", appid='" + appid + '\'' +
+                ", pagepath='" + pagepath + '\'' +
+                ", data=" + data +
+                ", color='" + color + '\'' +
+                '}';
+    }
 }
 
 
